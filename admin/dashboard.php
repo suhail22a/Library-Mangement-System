@@ -27,42 +27,119 @@ if(strlen($_SESSION['alogin'])==0) {
     <!-- GOOGLE FONT -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <style>
-        body {
-            background-image: url('assets/img/background.jpg'); /* Change to your background image */
-            background-size: cover;
-            color: #fff;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .header-line {
-            color: #ffcc00;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .back-widget-set {
-            transition: transform 0.3s;
-            border-radius: 10px;
-            background: linear-gradient(145deg, #ffffff, #e6e6e6);
-            box-shadow:  5px 5px 10px #d1d1d1,
-                        -5px -5px 10px #ffffff;
-            margin: 15px 0;
-        }
-        .back-widget-set:hover {
-            transform: translateY(-5px);
-            box-shadow:  10px 10px 20px #d1d1d1,
-                        -10px -10px 20px #ffffff;
-        }
-        .carousel-inner img {
-            width: 100%;
-            height: 400px; /* Adjust according to your needs */
-            border-radius: 10px;
-        }
-        .carousel-control {
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 50%;
-        }
-        .carousel-control:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
+        /* Animated Gradient Background */
+/* Animated Gradient Background */
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Animation for Gradient */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header Animation */
+.header-line {
+    color: #ffcc00;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Widget (Card) Styling */
+.back-widget-set {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2), -5px -5px 15px rgba(255, 255, 255, 0.4);
+    margin: 15px 0;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    animation: cardEntry 1s ease-in-out;
+}
+
+/* Card Entry Animation */
+@keyframes cardEntry {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects for Cards */
+.back-widget-set:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3), -10px -10px 30px rgba(255, 255, 255, 0.5);
+}
+
+/* Card Glow Effect on Hover */
+.back-widget-set:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+    transition: opacity 0.5s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.back-widget-set:hover:before {
+    opacity: 1;
+}
+
+/* Icon Bounce Effect */
+.back-widget-set i {
+    animation: bounce 2s infinite;
+    color: #333;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Fade in for Header */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Carousel controls style */
+.carousel-control {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+    .header-line {
+        font-size: 24px;
+    }
+}
+
     </style>
 </head>
 <body>
